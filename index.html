@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10172a">
+<meta name="description" content="FunPlay World — chơi game miễn phí ngay trên trình duyệt. Game phiêu lưu, trí nhớ và toán nhanh.">
+<title>FunPlay World — Chơi vui mỗi ngày</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--panel2:#18233c;--text:#f4f7ff;--muted:#aab6d3;--brand:#7c5cff;--cyan:#36d8c5;--pink:#ff6f9f;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(900px 450px at 80% -10%,rgba(124,92,255,.18),transparent 60%),var(--bg);color:var(--text)}
+a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+header{position:sticky;top:0;z-index:5;background:rgba(11,16,32,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;gap:24px}.logo{font-weight:900;font-size:1.3rem;letter-spacing:-.6px;display:flex;align-items:center;gap:10px;white-space:nowrap}.logo-mark{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--cyan));box-shadow:0 6px 24px #7c5cff44}
+.navlinks{display:flex;gap:20px;color:var(--muted);font-size:.94rem}.navlinks a:hover{color:white}.navright{margin-left:auto;display:flex;gap:10px;align-items:center}.lang,.menu-btn{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:9px 12px;border-radius:11px;cursor:pointer}.menu-btn{display:none}
+.hero{padding:58px 0 34px;display:grid;grid-template-columns:1.12fr .88fr;gap:30px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#a9ffe9;background:#36d8c516;border:1px solid #36d8c533;padding:7px 11px;border-radius:99px;font-size:.82rem;font-weight:700}.dot{width:7px;height:7px;background:var(--cyan);border-radius:50%;box-shadow:0 0 12px var(--cyan)}
+h1{font-size:clamp(2.4rem,5vw,4.5rem);line-height:1.02;letter-spacing:-2.4px;margin:20px 0 16px}.gradient{background:linear-gradient(90deg,#a99aff,#49e6d3 65%,#ff8bb2);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:1.08rem;line-height:1.7;max-width:570px;margin:0 0 24px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 17px;border-radius:13px;font-weight:800;border:1px solid transparent;cursor:pointer;transition:transform .18s,filter .18s}.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.primary{background:linear-gradient(135deg,var(--brand),#5e8dff);color:white;box-shadow:0 10px 30px #7c5cff33}.secondary{background:var(--panel);border-color:var(--line);color:var(--text)}
+.hero-art{min-height:290px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,#1c2850,#121a2e 65%);position:relative;overflow:hidden;display:grid;place-items:center}.orb{position:absolute;border-radius:50%;filter:blur(1px)}.orb.one{width:210px;height:210px;background:radial-gradient(circle at 35% 30%,#ffcb76,#ff6f9f 55%,#7c5cff);left:12%;top:14%;box-shadow:0 0 90px #ff6f9f35}.orb.two{width:110px;height:110px;background:linear-gradient(145deg,#5cf5d7,#467cff);right:11%;bottom:10%;box-shadow:0 0 50px #36d8c533}.hero-game{position:relative;z-index:1;font-size:7rem;filter:drop-shadow(0 15px 18px #05081588);transform:rotate(-8deg)}.float-card{position:absolute;z-index:2;background:#10172aeb;border:1px solid #ffffff20;padding:10px 13px;border-radius:14px;font-size:.85rem;box-shadow:0 12px 28px #0004}.fc1{right:7%;top:14%}.fc2{left:6%;bottom:12%}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 38px}.stat{padding:17px 18px;border:1px solid var(--line);background:#121a2e99;border-radius:16px}.stat b{font-size:1.3rem;display:block}.stat span{color:var(--muted);font-size:.86rem}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:38px 0 18px}.section-head h2{margin:0;font-size:1.7rem;letter-spacing:-.6px}.section-head p{margin:7px 0 0;color:var(--muted)}.search{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:0 12px;min-width:min(300px,100%)}.search input{background:transparent;border:0;outline:0;color:var(--text);padding:12px 0;width:100%}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.chip{background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:8px 13px;cursor:pointer}.chip.active,.chip:hover{background:#7c5cff22;color:#fff;border-color:#7c5cff88}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.game-card{border:1px solid var(--line);background:linear-gradient(160deg,#151f36,#10172a);border-radius:20px;overflow:hidden;transition:transform .2s,border-color .2s;min-width:0}.game-card:hover{transform:translateY(-4px);border-color:#7c5cff99}.cover{height:165px;display:grid;place-items:center;position:relative;overflow:hidden}.cover .emoji{font-size:4.8rem;filter:drop-shadow(0 12px 14px #0005);position:relative;z-index:1}.cover:before,.cover:after{content:"";position:absolute;border-radius:50%;background:#ffffff14}.cover:before{width:190px;height:190px;top:-90px;right:-35px}.cover:after{width:120px;height:120px;bottom:-65px;left:-20px}.cover.adventure{background:linear-gradient(135deg,#1d9e8c,#4169d8)}.cover.memory{background:linear-gradient(135deg,#7c5cff,#d45cae)}.cover.math{background:linear-gradient(135deg,#f59f45,#e85d75)}.cover.soon{background:linear-gradient(135deg,#263654,#3d4e70)}.tag{position:absolute;top:12px;left:12px;font-size:.72rem;font-weight:800;background:#0b1020b8;border:1px solid #ffffff24;padding:6px 9px;border-radius:999px}.card-body{padding:17px}.card-top{display:flex;align-items:start;justify-content:space-between;gap:10px}.card-body h3{font-size:1.08rem;margin:0 0 8px}.card-body p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.5;min-height:42px}.meta{display:flex;align-items:center;justify-content:space-between;margin-top:16px;color:var(--muted);font-size:.82rem}.play-link{color:#b9adff;font-weight:800}.empty{display:none;color:var(--muted);padding:28px;text-align:center;border:1px dashed var(--line);border-radius:16px}
+.feature{margin:46px 0;padding:24px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(120deg,#161f39,#11182a);display:flex;justify-content:space-between;gap:24px;align-items:center}.feature h2{margin:0 0 8px}.feature p{margin:0;color:var(--muted);line-height:1.6}.feature-icon{font-size:3rem;flex-shrink:0}
+footer{border-top:1px solid var(--line);margin-top:52px;padding:28px 0 36px;color:var(--muted);font-size:.88rem}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.notice{font-size:.8rem;color:#8290b0;margin-top:12px}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:40px}.hero-art{min-height:230px}.hero-game{font-size:5.5rem}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.navlinks{display:none}.menu-btn{display:inline-block}.section-head{align-items:start;flex-direction:column}.search{width:100%}}
+@media(max-width:520px){.wrap{width:min(100% - 22px,1160px)}.nav{height:62px;gap:10px}.logo{font-size:1.08rem}.logo-mark{width:32px;height:32px}.lang{padding:8px 9px}.hero{padding-top:30px;gap:20px}h1{letter-spacing:-1.4px}.hero p{font-size:1rem}.stats{gap:8px}.stat{padding:12px}.stat b{font-size:1.05rem}.stat span{font-size:.75rem}.grid{grid-template-columns:1fr}.cover{height:155px}.feature{padding:18px;align-items:start}.feature-icon{font-size:2.3rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="FunPlay World trang chủ"><span class="logo-mark">🎮</span><span>FunPlay <span class="gradient">World</span></span></a>
+    <nav class="navlinks"><a href="#games" data-vi="Khám phá game" data-en="Explore games">Khám phá game</a><a href="#categories" data-vi="Thể loại" data-en="Categories">Thể loại</a><a href="#about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a></nav>
+    <div class="navright"><button class="lang" id="langBtn" aria-label="Change language">VI / EN</button><a class="btn primary" href="#games" data-vi="Chơi ngay ↗" data-en="Play now ↗">Chơi ngay ↗</a></div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <span class="eyebrow"><span class="dot"></span><span data-vi="GIẢI TRÍ MIỄN PHÍ · CHƠI TRÊN TRÌNH DUYỆT" data-en="FREE GAMES · PLAY IN YOUR BROWSER">GIẢI TRÍ MIỄN PHÍ · CHƠI TRÊN TRÌNH DUYỆT</span></span>
+      <h1 data-vi="Một chút vui vẻ,<br><span class='gradient'>mỗi ngày.</span>" data-en="A little fun,<br><span class='gradient'>every day.</span>">Một chút vui vẻ,<br><span class="gradient">mỗi ngày.</span></h1>
+      <p data-vi="Khám phá những trò chơi nhỏ gọn, dễ chơi và thú vị. Không cần cài đặt — chọn game yêu thích và bắt đầu ngay." data-en="Discover lightweight, easy-to-play and delightful games. No installation needed — pick a favorite and start playing.">Khám phá những trò chơi nhỏ gọn, dễ chơi và thú vị. Không cần cài đặt — chọn game yêu thích và bắt đầu ngay.</p>
+      <div class="hero-actions"><a class="btn primary" href="#games" data-vi="Khám phá trò chơi 🎯" data-en="Explore games 🎯">Khám phá trò chơi 🎯</a><a class="btn secondary" href="#about" data-vi="Tìm hiểu thêm" data-en="Learn more">Tìm hiểu thêm</a></div>
+    </div>
+    <div class="hero-art" aria-label="Minh họa trò chơi">
+      <div class="orb one"></div><div class="orb two"></div><div class="hero-game">🕹️</div>
+      <div class="float-card fc1">✨ <b data-vi="Chơi tức thì" data-en="Instant play">Chơi tức thì</b></div>
+      <div class="float-card fc2">🌍 <b data-vi="Việt Nam · Toàn cầu" data-en="Vietnam · Worldwide">Việt Nam · Toàn cầu</b></div>
+    </div>
+  </section>
+  <section class="stats" aria-label="Ưu điểm">
+    <div class="stat"><b>⚡ Nhanh</b><span data-vi="Thiết kế nhẹ, ưu tiên tốc độ" data-en="Lightweight, speed-first design">Thiết kế nhẹ, ưu tiên tốc độ</span></div>
+    <div class="stat"><b>📱 Responsive</b><span data-vi="Máy tính và điện thoại" data-en="Desktop and mobile">Máy tính và điện thoại</span></div>
+    <div class="stat"><b>🌐 VI + EN</b><span data-vi="Sẵn sàng cho người chơi quốc tế" data-en="Ready for global players">Sẵn sàng cho người chơi quốc tế</span></div>
+  </section>
+  <section id="games">
+    <div class="section-head"><div><h2 data-vi="🎮 Khám phá trò chơi" data-en="🎮 Explore games">🎮 Khám phá trò chơi</h2><p data-vi="Chọn một trò chơi và bắt đầu trong vài giây." data-en="Choose a game and start in seconds.">Chọn một trò chơi và bắt đầu trong vài giây.</p></div>
+      <label class="search">🔎 <input id="searchInput" type="search" placeholder="Tìm trò chơi..." data-placeholder-vi="Tìm trò chơi..." data-placeholder-en="Search games..." aria-label="Search games"></label>
+    </div>
+    <div id="categories" class="filters">
+      <button class="chip active" data-filter="all" data-vi="Tất cả" data-en="All">Tất cả</button><button class="chip" data-filter="adventure" data-vi="Phiêu lưu" data-en="Adventure">Phiêu lưu</button><button class="chip" data-filter="puzzle" data-vi="Trí tuệ" data-en="Puzzle">Trí tuệ</button><button class="chip" data-filter="casual" data-vi="Giải trí" data-en="Casual">Giải trí</button>
+    </div>
+    <div class="grid" id="gameGrid">
+      <article class="game-card" data-category="adventure" data-search="hành trình phiêu lưu adventure platformer coins">
+        <a href="games/hanh-trinh/" aria-label="Chơi Hành Trình Phiêu Lưu">
+          <div class="cover adventure"><span class="tag" data-vi="NỔI BẬT" data-en="FEATURED">NỔI BẬT</span><span class="emoji">🏝️</span></div>
+          <div class="card-body"><div class="card-top"><h3 data-vi="Hành Trình Phiêu Lưu" data-en="Adventure Journey">Hành Trình Phiêu Lưu</h3>⭐</div><p data-vi="Chạy, nhảy qua chướng ngại vật và thu thập xu trên hành trình." data-en="Run, jump over obstacles and collect coins on your journey.">Chạy, nhảy qua chướng ngại vật và thu thập xu trên hành trình.</p><div class="meta"><span>🕹️ <span data-vi="Phiêu lưu" data-en="Adventure">Phiêu lưu</span></span><span class="play-link" data-vi="Chơi ngay →" data-en="Play now →">Chơi ngay →</span></div></div>
+        </a>
+      </article>
+      <article class="game-card" data-category="puzzle" data-search="trí nhớ memory cards matching">
+        <a href="games/tri-nho/" aria-label="Chơi Thử Thách Trí Nhớ">
+          <div class="cover memory"><span class="tag" data-vi="LUYỆN NÃO" data-en="BRAIN TRAINING">LUYỆN NÃO</span><span class="emoji">🧠</span></div>
+          <div class="card-body"><div class="card-top"><h3 data-vi="Thử Thách Trí Nhớ" data-en="Memory Match">Thử Thách Trí Nhớ</h3>🧩</div><p data-vi="Lật thẻ, tìm các cặp hình giống nhau với ít lượt đi nhất." data-en="Flip cards and match pairs using as few moves as possible.">Lật thẻ, tìm các cặp hình giống nhau với ít lượt đi nhất.</p><div class="meta"><span>🧩 <span data-vi="Trí tuệ" data-en="Puzzle">Trí tuệ</span></span><span class="play-link" data-vi="Chơi ngay →" data-en="Play now →">Chơi ngay →</span></div></div>
+        </a>
+      </article>
+      <article class="game-card" data-category="casual puzzle" data-search="toán nhanh math quiz numbers">
+        <a href="games/toan-nhanh/" aria-label="Chơi Toán Nhanh">
+          <div class="cover math"><span class="tag" data-vi="THỬ THÁCH 60 GIÂY" data-en="60-SECOND CHALLENGE">THỬ THÁCH 60 GIÂY</span><span class="emoji">➗</span></div>
+          <div class="card-body"><div class="card-top"><h3 data-vi="Toán Nhanh" data-en="Quick Math">Toán Nhanh</h3>⚡</div><p data-vi="Giải càng nhiều phép tính đúng càng tốt trong 60 giây." data-en="Solve as many math questions as you can in 60 seconds.">Giải càng nhiều phép tính đúng càng tốt trong 60 giây.</p><div class="meta"><span>⚡ <span data-vi="Giải trí" data-en="Casual">Giải trí</span></span><span class="play-link" data-vi="Chơi ngay →" data-en="Play now →">Chơi ngay →</span></div></div>
+        </a>
+      </article>
+    </div>
+    <div class="empty" id="emptyState" data-vi="Không tìm thấy trò chơi phù hợp. Hãy thử từ khóa khác." data-en="No matching games found. Try another search.">Không tìm thấy trò chơi phù hợp. Hãy thử từ khóa khác.</div>
+  </section>
+  <section class="feature" id="about"><div><h2 data-vi="🌟 Một sân chơi đang lớn dần" data-en="🌟 A game world in the making">🌟 Một sân chơi đang lớn dần</h2><p data-vi="FunPlay World bắt đầu với những trò chơi nhỏ, tải nhanh và dễ tiếp cận. Chúng tôi sẽ bổ sung thêm game mới theo từng giai đoạn." data-en="FunPlay World starts with small, fast and accessible games. More games will be added in stages.">FunPlay World bắt đầu với những trò chơi nhỏ, tải nhanh và dễ tiếp cận. Chúng tôi sẽ bổ sung thêm game mới theo từng giai đoạn.</p></div><div class="feature-icon">🚀</div></section>
+</main>
+<footer><div class="wrap foot"><div><a class="logo" href="#"><span class="logo-mark">🎮</span><span>FunPlay <span class="gradient">World</span></span></a><div class="notice" data-vi="Bản thử nghiệm đầu tiên · Nội dung và trò chơi sẽ tiếp tục được phát triển." data-en="Early prototype · More content and games will be added.">Bản thử nghiệm đầu tiên · Nội dung và trò chơi sẽ tiếp tục được phát triển.</div></div><div>© <span id="year"></span> FunPlay World · <span data-vi="Chơi vui, chơi có trách nhiệm." data-en="Play for fun, play responsibly.">Chơi vui, chơi có trách nhiệm.</span></div></div></footer>
+<script>
+let currentLang='vi', activeFilter='all';
+const langBtn=document.getElementById('langBtn');
+function setLang(lang){currentLang=lang;document.documentElement.lang=lang;document.querySelectorAll('[data-vi][data-en]').forEach(el=>{const val=el.dataset[lang];if(val!==undefined)el.innerHTML=val;});document.querySelectorAll('[data-placeholder-vi]').forEach(el=>el.placeholder=el.dataset['placeholder'+(lang==='vi'?'Vi':'En')]);langBtn.textContent=lang==='vi'?'VI / EN':'EN / VI';document.getElementById('searchInput').setAttribute('aria-label',lang==='vi'?'Tìm trò chơi':'Search games');}
+langBtn.addEventListener('click',()=>setLang(currentLang==='vi'?'en':'vi'));
+const searchInput=document.getElementById('searchInput'), cards=[...document.querySelectorAll('.game-card')], empty=document.getElementById('emptyState');
+function filterCards(){const q=searchInput.value.trim().toLowerCase();let count=0;cards.forEach(card=>{const okCat=activeFilter==='all'||card.dataset.category.split(' ').includes(activeFilter);const okText=(card.dataset.search+' '+card.innerText).toLowerCase().includes(q);card.style.display=okCat&&okText?'':'none';if(okCat&&okText)count++;});empty.style.display=count?'none':'block';}
+searchInput.addEventListener('input',filterCards);document.querySelectorAll('.chip').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');activeFilter=btn.dataset.filter;filterCards();}));document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body></html>
