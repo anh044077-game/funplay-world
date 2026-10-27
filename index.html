@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FunPlay World — Cổng Trò Chơi Trực Tuyến</title>
+    <title>FunPlay World - Free Online Games</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -13,287 +13,301 @@
             --accent-color: #3b82f6;
             --accent-hover: #2563eb;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-color); padding: 16px; max-width: 800px; margin: 0 auto; line-height: 1.5; }
-        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid #334155; }
-        .logo { font-size: 1.25rem; font-weight: bold; color: var(--accent-color); text-decoration: none; cursor: pointer; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 15px; font-size: 0.9rem; }
-        .nav-links a:hover { color: var(--accent-color); }
-        .hero { text-align: center; margin-bottom: 24px; }
-        .hero h1 { font-size: 1.75rem; margin-bottom: 8px; }
-        .hero p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
-        .search-box { width: 100%; padding: 10px 16px; background: var(--card-bg); border: 1px solid #475569; border-radius: 8px; color: var(--text-color); font-size: 1rem; margin-bottom: 20px; }
-        .search-box:focus { outline: none; border-color: var(--accent-color); }
-        .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 30px; }
-        .game-card { background: var(--card-bg); border-radius: 8px; padding: 16px; text-align: center; border: 1px solid #334155; cursor: pointer; transition: transform 0.2s; }
-        .game-card:hover { transform: translateY(-2px); border-color: var(--accent-color); }
-        .game-icon { font-size: 2rem; margin-bottom: 8px; }
-        .game-name { font-weight: 500; font-size: 0.95rem; margin-bottom: 8px; }
-        .play-btn { display: inline-block; background: var(--accent-color); color: white; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-size: 0.85rem; width: 100%; }
-        .play-btn:hover { background: var(--accent-hover); }
-        
-        /* Khu vực hiển thị game/trang con */
-        .container-view { display: none; background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid #334155; margin-bottom: 30px; text-align: center; }
-        .back-home { display: inline-block; margin-bottom: 15px; color: var(--accent-color); text-decoration: none; cursor: pointer; font-weight: 500; float: left; }
-        
-        /* CSS cho các game bên trong */
-        input.game-input { width: 100%; padding: 10px; font-size: 1.1rem; background: #0f172a; border: 1px solid #475569; color: white; border-radius: 6px; text-align: center; margin: 15px 0; }
-        button.game-btn { background: var(--accent-color); color: white; border: none; padding: 10px 20px; font-size: 1rem; border-radius: 6px; cursor: pointer; width: 100%; }
-        button.game-btn:hover { background: var(--accent-hover); }
-        .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; max-width: 300px; margin-left: auto; margin-right: auto; }
-        .m-card { background: #334155; height: 60px; border-radius: 6px; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        .m-card.flipped { background: var(--accent-color); }
-
-        footer { text-align: center; padding-top: 20px; border-top: 1px solid #334155; color: var(--text-muted); font-size: 0.85rem; }
-        footer a { color: var(--text-muted); text-decoration: none; margin: 0 8px; cursor: pointer; }
-        footer a:hover { color: var(--accent-color); }
-        .page-content { text-align: left; padding: 10px; color: var(--text-muted); }
-        .page-content h2 { color: var(--text-color); margin-bottom: 10px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            padding: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #334155;
+        }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .lang-switch button {
+            background: var(--card-bg);
+            border: 1px solid #475569;
+            color: var(--text-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .lang-switch button:hover {
+            border-color: var(--accent-color);
+        }
+        .hero {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: 1.75rem;
+            margin-bottom: 8px;
+        }
+        .hero p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+        .search-box {
+            width: 100%;
+            padding: 10px 16px;
+            background: var(--card-bg);
+            border: 1px solid #475569;
+            border-radius: 8px;
+            color: var(--text-color);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        .categories {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            margin-bottom: 24px;
+            padding-bottom: 4px;
+        }
+        .category-btn {
+            background: var(--card-bg);
+            border: none;
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+        .category-btn.active, .category-btn:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+        .section-title {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .game-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #334155;
+            transition: transform 0.2s;
+        }
+        .game-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+        }
+        .game-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        .game-name {
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        .play-btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            width: 100%;
+        }
+        .play-btn:hover {
+            background: var(--accent-hover);
+        }
+        footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        footer a:hover {
+            color: var(--accent-color);
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <a onclick="showHome()" class="logo">🎮 FunPlay World</a>
-        <div class="nav-links">
-            <a onclick="showPage('about')">Giới thiệu</a>
-            <a onclick="showPage('contact')">Liên hệ</a>
-            <a onclick="showPage('privacy')">Quyền riêng tư</a>
+        <a href="#" class="logo">🎮 FunPlay World</a>
+        <div class="lang-switch">
+            <button onclick="toggleLang()" id="langBtn">EN / VI</button>
         </div>
     </header>
 
-    <!-- TRANG CHỦ -->
-    <div id="homeView">
-        <div class="hero">
-            <h1>Một chút vui vẻ, mỗi ngày.</h1>
-            <p>Trải nghiệm các trò chơi nhỏ gọn trực tiếp trên trình duyệt.</p>
-            <input type="text" id="searchInput" class="search-box" placeholder="Tìm kiếm trò chơi..." onkeyup="searchGames()">
-        </div>
-
-        <div class="games-grid" id="gamesGrid">
-            <div class="game-card" onclick="openGame('doanSo')" data-name="đoán số may mắn">
-                <div class="game-icon">🎯</div>
-                <div class="game-name">Đoán Số May Mắn</div>
-                <span class="play-btn">Chơi ngay</span>
-            </div>
-            <div class="game-card" onclick="openGame('toanNhanh')" data-name="toán nhanh">
-                <div class="game-icon">➗</div>
-                <div class="game-name">Toán Nhanh 60s</div>
-                <span class="play-btn">Chơi ngay</span>
-            </div>
-            <div class="game-card" onclick="openGame('triNho')" data-name="thử thách trí nhớ">
-                <div class="game-icon">🧠</div>
-                <div class="game-name">Thử Thách Trí Nhớ</div>
-                <span class="play-btn">Chơi ngay</span>
-            </div>
-            <div class="game-card" onclick="openGame('bamNhanh')" data-name="bấm nhanh phản xạ">
-                <div class="game-icon">⚡</div>
-                <div class="game-name">Bấm Nhanh Phản Xạ</div>
-                <span class="play-btn">Chơi ngay</span>
-            </div>
-        </div>
+    <div class="hero">
+        <h1 id="heroTitle">Trò Chơi Trực Tuyến Miễn Phí</h1>
+        <p id="heroDesc">Thư giãn mọi lúc, mọi nơi với các trò chơi nhanh gọn</p>
+        <input type="text" id="searchInput" class="search-box" placeholder="Tìm kiếm trò chơi..." onkeyup="searchGames()">
     </div>
 
-    <!-- KHU VỰC CHƠI GAME & TRANG PHỤ -->
-    <div id="gameView" class="container-view">
-        <a onclick="showHome()" class="back-link">&larr; Quay lại trang chủ</a>
-        <div style="clear: both;"></div>
-        <div id="gameContentArea"></div>
+    <div class="categories">
+        <button class="category-btn active" onclick="filterCategory('all')" id="catAll">Tất cả</button>
+        <button class="category-btn" onclick="filterCategory('adventure')" id="catAdv">Phiêu lưu</button>
+        <button class="category-btn" onclick="filterCategory('brain')" id="catBrain">Trí tuệ</button>
+        <button class="category-btn" onclick="filterCategory('puzzle')" id="catPuzzle">Giải đố</button>
+    </div>
+
+    <div class="section-title" id="featuredTitle">Trò chơi nổi bật</div>
+    
+    <div class="games-grid" id="gamesGrid">
+        <!-- Game 1 -->
+        <div class="game-card" data-category="adventure" data-name-vi="Hành Trình Phiêu Lưu" data-name-en="Adventure Journey">
+            <div class="game-icon">🚀</div>
+            <div class="game-name">Hành Trình Phiêu Lưu</div>
+            <a href="games/hanh-trinh/index.html" class="play-btn" data-play="Chơi ngay">Chơi ngay</a>
+        </div>
+        <!-- Game 2 -->
+        <div class="game-card" data-category="brain" data-name-vi="Trí Nhớ" data-name-en="Memory Match">
+            <div class="game-icon">🧠</div>
+            <div class="game-name">Trí Nhớ</div>
+            <a href="games/tri-nho/index.html" class="play-btn" data-play="Chơi ngay">Chơi ngay</a>
+        </div>
+        <!-- Game 3 -->
+        <div class="game-card" data-category="brain" data-name-vi="Toán Nhanh" data-name-en="Quick Math">
+            <div class="game-icon">🔢</div>
+            <div class="game-name">Toán Nhanh</div>
+            <a href="games/toan-nhanh/index.html" class="play-btn" data-play="Chơi ngay">Chơi ngay</a>
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2026 FunPlay World. All rights reserved.</p>
         <div style="margin-top: 8px;">
-            <a onclick="showPage('about')">Giới thiệu</a> | 
-            <a onclick="showPage('contact')">Liên hệ</a> | 
-            <a onclick="showPage('privacy')">Quyền riêng tư</a>
+            <a href="about.html" id="linkAbout">Giới thiệu</a> | 
+            <a href="contact.html" id="linkContact">Liên hệ</a> | 
+            <a href="privacy.html" id="linkPrivacy">Quyền riêng tư</a>
         </div>
     </footer>
 
     <script>
-        function showHome() {
-            document.getElementById('homeView').style.display = 'block';
-            document.getElementById('gameView').style.display = 'none';
+        let currentLang = 'vi';
+
+        const translations = {
+            vi: {
+                heroTitle: "Trò Chơi Trực Tuyến Miễn Phí",
+                heroDesc: "Thư giãn mọi lúc, mọi nơi với các trò chơi nhanh gọn",
+                searchPlaceholder: "Tìm kiếm trò chơi...",
+                catAll: "Tất cả",
+                catAdv: "Phiêu lưu",
+                catBrain: "Trí tuệ",
+                catPuzzle: "Giải đố",
+                featuredTitle: "Trò chơi nổi bật",
+                playBtn: "Chơi ngay",
+                linkAbout: "Giới thiệu",
+                linkContact: "Liên hệ",
+                linkPrivacy: "Quyền riêng tư"
+            },
+            en: {
+                heroTitle: "Free Online Games",
+                heroDesc: "Play fun and casual games anytime, anywhere",
+                searchPlaceholder: "Search games...",
+                catAll: "All",
+                catAdv: "Adventure",
+                catBrain: "Brain",
+                catPuzzle: "Puzzle",
+                featuredTitle: "Featured Games",
+                playBtn: "Play Now",
+                linkAbout: "About",
+                linkContact: "Contact",
+                linkPrivacy: "Privacy Policy"
+            }
+        };
+
+        function toggleLang() {
+            currentLang = currentLang === 'vi' ? 'en' : 'vi';
+            const t = translations[currentLang];
+            
+            document.getElementById('heroTitle').innerText = t.heroTitle;
+            document.getElementById('heroDesc').innerText = t.heroDesc;
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            document.getElementById('catAll').innerText = t.catAll;
+            document.getElementById('catAdv').innerText = t.catAdv;
+            document.getElementById('catBrain').innerText = t.catBrain;
+            document.getElementById('catPuzzle').innerText = t.catPuzzle;
+            document.getElementById('featuredTitle').innerText = t.featuredTitle;
+            document.getElementById('linkAbout').innerText = t.linkAbout;
+            document.getElementById('linkContact').innerText = t.linkContact;
+            document.getElementById('linkPrivacy').innerText = t.linkPrivacy;
+
+            // Cập nhật tên game và nút chơi theo ngôn ngữ
+            document.querySelectorAll('.game-card').forEach(card => {
+                const nameDiv = card.querySelector('.game-name');
+                const playBtn = card.querySelector('.play-btn');
+                if (currentLang === 'en') {
+                    nameDiv.innerText = card.getAttribute('data-name-en');
+                } else {
+                    nameDiv.innerText = card.getAttribute('data-name-vi');
+                }
+                playBtn.innerText = t.playBtn;
+            });
         }
 
         function searchGames() {
-            let q = document.getElementById('searchInput').value.toLowerCase();
-            document.querySelectorAll('.game-card').forEach(card => {
-                let name = card.getAttribute('data-name');
-                card.style.display = name.includes(q) ? 'block' : 'none';
+            let query = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.game-card');
+            cards.forEach(card => {
+                let nameVi = card.getAttribute('data-name-vi').toLowerCase();
+                let nameEn = card.getAttribute('data-name-en').toLowerCase();
+                if (nameVi.includes(query) || nameEn.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
             });
         }
 
-        function showPage(type) {
-            document.getElementById('homeView').style.display = 'none';
-            let area = document.getElementById('gameContentArea');
-            document.getElementById('gameView').style.display = 'block';
+        function filterCategory(category) {
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
 
-            if (type === 'about') {
-                area.innerHTML = `<div class="page-content"><h2>Giới thiệu về FunPlay World</h2><p>FunPlay World là cổng trò chơi trực tuyến miễn phí, mang lại những giây phút giải trí nhanh gọn, thoải mái cho mọi người trên cả máy tính lẫn điện thoại.</p></div>`;
-            } else if (type === 'contact') {
-                area.innerHTML = `<div class="page-content"><h2>Liên hệ</h2><p>Mọi ý kiến đóng góp hoặc báo lỗi game, vui lòng gửi về email: <strong>support@funplayworld.com</strong></p></div>`;
-            } else if (type === 'privacy') {
-                area.innerHTML = `<div class="page-content"><h2>Chính sách quyền riêng tư</h2><p>Chúng tôi không thu thập thông tin cá nhân của bạn. Trò chơi lưu trữ dữ liệu cục bộ trực tiếp trên trình duyệt của bạn.</p></div>`;
-            }
-        }
-
-        function openGame(name) {
-            document.getElementById('homeView').style.display = 'none';
-            let area = document.getElementById('gameContentArea');
-            document.getElementById('gameView').style.display = 'block';
-
-            if (name === 'doanSo') {
-                area.innerHTML = `
-                    <h2>🎯 Đoán Số May Mắn</h2>
-                    <p>Tìm con số bí mật từ 1 đến 100!</p>
-                    <input type="number" id="dsInput" class="game-input" placeholder="Nhập số từ 1-100">
-                    <button class="game-btn" onclick="playDoanSo()">Đoán Ngay</button>
-                    <p id="dsMsg" style="margin-top:15px; font-weight:bold;"></p>
-                `;
-                window.secretNum = Math.floor(Math.random() * 100) + 1;
-                window.dsTries = 0;
-            } else if (name === 'toanNhanh') {
-                area.innerHTML = `
-                    <h2>➗ Toán Nhanh 60 Giây</h2>
-                    <p>Thời gian: <span id="tnTimer">60</span>s | Điểm: <span id="tnScore">0</span></p>
-                    <h3 id="tnQ" style="margin:20px 0; color:#3b82f6;">Bấm Bắt Đầu</h3>
-                    <input type="number" id="tnAns" class="game-input" placeholder="Kết quả">
-                    <button class="game-btn" id="tnBtn" onclick="startToanNhanh()">Bắt Đầu</button>
-                `;
-            } else if (name === 'triNho') {
-                area.innerHTML = `
-                    <h2>🧠 Thử Thách Trí Nhớ</h2>
-                    <p>Lật các thẻ để tìm cặp giống nhau!</p>
-                    <div class="memory-grid" id="mGrid"></div>
-                `;
-                setupMemory();
-            } else if (name === 'bamNhanh') {
-                area.innerHTML = `
-                    <h2>⚡ Bấm Nhanh Phản Xạ</h2>
-                    <p>Điểm: <span id="bnScore">0</span> | Thời gian: <span id="bnTimer">10</span>s</p>
-                    <button class="game-btn" id="bnStart" onclick="startBamNhanh()" style="margin-top:20px;">Bắt Đầu</button>
-                    <button id="bnTarget" onclick="hitBamNhanh()" style="display:none; background:#ef4444; color:white; border:none; width:80px; height:80px; border-radius:50%; font-weight:bold; cursor:pointer; margin:20px auto;">BẤM</button>
-                `;
-            }
-        }
-
-        // Logic Game Đoán Số
-        function playDoanSo() {
-            let val = parseInt(document.getElementById('dsInput').value);
-            let msg = document.getElementById('dsMsg');
-            window.dsTries++;
-            if (val === window.secretNum) {
-                msg.style.color = '#22c55e';
-                msg.innerText = `🎉 Chính xác! Số bí mật là ${window.secretNum} (${window.dsTries} lần đoán).`;
-            } else if (val < window.secretNum) {
-                msg.style.color = '#f59e0b';
-                msg.innerText = '📈 Số bí mật lớn hơn thế!';
-            } else {
-                msg.style.color = '#3b82f6';
-                msg.innerText = '📉 Số bí mật nhỏ hơn thế!';
-            }
-        }
-
-        // Logic Game Toán Nhanh
-        let tnPlaying = false, tnTimerObj = null;
-        function startToanNhanh() {
-            if (!tnPlaying) {
-                tnPlaying = true; window.tnScore = 0; window.tnTime = 60;
-                document.getElementById('tnScore').innerText = 0;
-                document.getElementById('tnBtn').innerText = 'Trả Lời';
-                nextTnQ();
-                tnTimerObj = setInterval(() => {
-                    window.tnTime--;
-                    document.getElementById('tnTimer').innerText = window.tnTime;
-                    if (window.tnTime <= 0) {
-                        clearInterval(tnTimerObj); tnPlaying = false;
-                        alert(`⏰ Hết giờ! Điểm của bạn: ${window.tnScore}`);
-                        document.getElementById('tnBtn').innerText = 'Chơi Lại';
-                        document.getElementById('tnQ').innerText = 'Kết Thúc';
-                    }
-                }, 1000);
-            } else {
-                let ans = parseInt(document.getElementById('tnAns').value);
-                if (ans === window.tnCorrect) {
-                    window.tnScore++;
-                    document.getElementById('tnScore').innerText = window.tnScore;
+            let cards = document.querySelectorAll('.game-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
                 }
-                document.getElementById('tnAns').value = '';
-                nextTnQ();
-            }
-        }
-        function nextTnQ() {
-            let a = Math.floor(Math.random() * 15) + 1;
-            let b = Math.floor(Math.random() * 15) + 1;
-            let ops = ['+', '-', '*'];
-            let op = ops[Math.floor(Math.random() * ops.length)];
-            if(op === '-' && a < b) [a, b] = [b, a];
-            window.tnCorrect = eval(`${a} ${op} ${b}`);
-            document.getElementById('tnQ').innerText = `${a} ${op} ${b} = ?`;
-        }
-
-        // Logic Game Trí Nhớ
-        function setupMemory() {
-            let emojis = ['🍎', '🍎', '🍌', '🍌', '🍇', '🍇', '🍉', '🍉'];
-            let shuffled = emojis.sort(() => 0.5 - Math.random());
-            let grid = document.getElementById('mGrid');
-            let flipped = [], matched = 0;
-            grid.innerHTML = '';
-            shuffled.forEach(emoji => {
-                let card = document.createElement('div');
-                card.classList.add('m-card');
-                card.onclick = () => {
-                    if (card.classList.contains('flipped') || flipped.length === 2) return;
-                    card.innerText = emoji;
-                    card.classList.add('flipped');
-                    flipped.push(card);
-                    if (flipped.length === 2) {
-                        if (flipped[0].innerText === flipped[1].innerText) {
-                            matched += 2; flipped = [];
-                            if (matched === emojis.length) setTimeout(() => alert('🎉 Bạn đã thắng!'), 200);
-                        } else {
-                            setTimeout(() => {
-                                flipped.forEach(c => { c.innerText = ''; c.classList.remove('flipped'); });
-                                flipped = [];
-                            }, 700);
-                        }
-                    }
-                };
-                grid.appendChild(card);
             });
-        }
-
-        // Logic Game Bấm Nhanh
-        let bnPlaying = false, bnTimerObj = null;
-        function startBamNhanh() {
-            window.bnScore = 0; window.bnTime = 10; bnPlaying = true;
-            document.getElementById('bnScore').innerText = 0;
-            document.getElementById('bnTimer').innerText = 10;
-            document.getElementById('bnStart').style.display = 'none';
-            document.getElementById('bnTarget').style.display = 'block';
-            moveBnTarget();
-            bnTimerObj = setInterval(() => {
-                window.bnTime--;
-                document.getElementById('bnTimer').innerText = window.bnTime;
-                if (window.bnTime <= 0) {
-                    clearInterval(bnTimerObj); bnPlaying = false;
-                    document.getElementById('bnTarget').style.display = 'none';
-                    document.getElementById('bnStart').style.display = 'inline-block';
-                    document.getElementById('bnStart').innerText = 'Chơi Lại';
-                    alert(`⏰ Hết giờ! Điểm phản xạ: ${window.bnScore}`);
-                }
-            }, 1000);
-        }
-        function hitBamNhanh() {
-            if (!bnPlaying) return;
-            window.bnScore++;
-            document.getElementById('bnScore').innerText = window.bnScore;
-            moveBnTarget();
-        }
-        function moveBnTarget() {
-            let t = document.getElementById('bnTarget');
-            t.style.transform = `translate(${Math.random()*120 - 60}px, ${Math.random()*20 - 10}px)`;
         }
     </script>
 </body>
