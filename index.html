@@ -94,4 +94,11 @@ const searchInput=document.getElementById('searchInput'), cards=[...document.que
 function filterCards(){const q=searchInput.value.trim().toLowerCase();let count=0;cards.forEach(card=>{const okCat=activeFilter==='all'||card.dataset.category.split(' ').includes(activeFilter);const okText=(card.dataset.search+' '+card.innerText).toLowerCase().includes(q);card.style.display=okCat&&okText?'':'none';if(okCat&&okText)count++;});empty.style.display=count?'none':'block';}
 searchInput.addEventListener('input',filterCards);document.querySelectorAll('.chip').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');activeFilter=btn.dataset.filter;filterCards();}));document.getElementById('year').textContent=new Date().getFullYear();
 </script>
-</body></html>
+</body></html> <footer>
+    <p>&copy; 2026 FunPlay World. All rights reserved.</p>
+    <div style="margin-top: 8px;">
+        <a href="about.html">Giới thiệu</a> | 
+        <a href="contact.html">Liên hệ</a> | 
+        <a href="privacy.html">Chính sách quyền riêng tư</a>
+    </div>
+</footer>
