@@ -3,312 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FunPlay World - Free Online Games</title>
+    <title>FunPlay World — Cổng Trò Chơi Trực Tuyến</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-color: #3b82f6;
-            --accent-hover: #2563eb;
+            --bg-dark: #0b0f19;
+            --card-bg: #151d2a;
+            --card-border: #232f45;
+            --primary-blue: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent-cyan: #06b6d4;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
         }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
+
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.5;
-            padding: 16px;
-            max-width: 800px;
-            margin: 0 auto;
+            padding-bottom: 40px;
         }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* Navigation Header */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #334155;
+            padding: 16px 5%;
+            background-color: rgba(11, 15, 25, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--card-border);
         }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
         .logo {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--accent-color);
-            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #fff;
         }
-        .lang-switch button {
-            background: var(--card-bg);
-            border: 1px solid #475569;
-            color: var(--text-color);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
+
+        .logo-icon {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 16px;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        .nav-menu a:hover {
+            color: var(--text-main);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-sub);
+            font-weight: 600;
             font-size: 0.85rem;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 6px;
         }
-        .lang-switch button:hover {
-            border-color: var(--accent-color);
+
+        .lang-btn:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.05);
         }
-        .hero {
-            text-align: center;
-            margin-bottom: 24px;
+
+        .play-now-header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.2s;
         }
-        .hero h1 {
-            font-size: 1.75rem;
-            margin-bottom: 8px;
+
+        .play-now-header:hover {
+            background: var(--primary-hover);
         }
-        .hero p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+
+        /* Hero Banner Section */
+        .hero-section {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 16px;
         }
-        .search-box {
-            width: 100%;
-            padding: 10px 16px;
-            background: var(--card-bg);
-            border: 1px solid #475569;
-            border-radius: 8px;
-            color: var(--text-color);
+
+        .hero-desc {
+            color: var(--text-sub);
             font-size: 1rem;
-            margin-bottom: 20px;
-        }
-        .search-box:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-        .categories {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
             margin-bottom: 24px;
-            padding-bottom: 4px;
         }
-        .category-btn {
-            background: var(--card-bg);
-            border: none;
-            color: var(--text-muted);
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            white-space: nowrap;
-            font-size: 0.9rem;
+
+        .hero-btns {
+            display: flex;
+            gap: 12px;
         }
-        .category-btn.active, .category-btn:hover {
-            background: var(--accent-color);
+
+        .btn-primary {
+            background: var(--primary-blue);
             color: white;
-        }
-        .section-title {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
+            padding: 12px 24px;
+            border-radius: 8px;
             font-weight: 600;
+            font-size: 0.95rem;
         }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Banner Card Right */
+        .hero-visual {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-visual-badge {
+            align-self: flex-end;
+            background: rgba(255,255,255,0.08);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--text-sub);
+        }
+
+        .hero-visual-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .arcade-icon {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #f43f5e, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Feature Cards Row */
+        .features-row {
+            max-width: 1100px;
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+        }
+
+        .feature-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .feature-desc {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        /* Games Grid Section */
+        .games-section {
+            max-width: 1100px;
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
+        }
+
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 12px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
-        .game-card {
+
+        .game-card-large {
             background: var(--card-bg);
-            border-radius: 8px;
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #334155;
-            transition: transform 0.2s;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, border-color 0.2s;
         }
-        .game-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent-color);
+
+        .game-card-large:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-blue);
         }
-        .game-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
+
+        .game-thumb {
+            height: 140px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
         }
-        .game-name {
-            font-weight: 500;
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-            color: var(--text-color);
+
+        .thumb-1 { background: linear-gradient(135deg, #0284c7, #0d9488); }
+        .thumb-2 { background: linear-gradient(135deg, #6366f1, #a855f7); }
+        .thumb-3 { background: linear-gradient(135deg, #2563eb, #0284c7); }
+        .thumb-4 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+
+        .game-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
         }
-        .play-btn {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            padding: 6px 12px;
-            border-radius: 4px;
+
+        .game-info {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .game-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .game-desc {
             font-size: 0.85rem;
-            font-weight: 500;
-            width: 100%;
+            color: var(--text-sub);
+            margin-bottom: 16px;
         }
-        .play-btn:hover {
-            background: var(--accent-hover);
+
+        .game-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-sub);
         }
+
+        .play-link {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
+        /* Banner info bottom */
+        .info-banner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-banner h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .info-banner p {
+            color: var(--text-sub);
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
         footer {
-            text-align: center;
+            max-width: 1100px;
+            margin: 30px auto 0 auto;
             padding-top: 20px;
-            border-top: 1px solid #334155;
-            color: var(--text-muted);
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            color: var(--text-sub);
             font-size: 0.85rem;
         }
+
         footer a {
-            color: var(--text-muted);
-            text-decoration: none;
             margin: 0 8px;
+            color: var(--text-sub);
         }
+
         footer a:hover {
-            color: var(--accent-color);
+            color: var(--primary-blue);
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .hero-section { grid-template-columns: 1fr; text-align: center; }
+            .hero-btns { justify-content: center; }
+            .features-row { grid-template-columns: 1fr; }
+            .games-grid { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header Navigation -->
     <header>
-        <a href="#" class="logo">🎮 FunPlay World</a>
-        <div class="lang-switch">
-            <button onclick="toggleLang()" id="langBtn">EN / VI</button>
+        <div class="header-left">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🎮</span>
+                <span>FunPlay World</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#games">Khám phá game</a>
+                <a href="#games">Thể loại</a>
+                <a href="about.html">Giới thiệu</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="lang-btn">VI / EN</button>
+            <a href="#games" class="play-now-header">Chơi ngay ↗</a>
         </div>
     </header>
 
-    <div class="hero">
-        <h1 id="heroTitle">Trò Chơi Trực Tuyến Miễn Phí</h1>
-        <p id="heroDesc">Thư giãn mọi lúc, mọi nơi với các trò chơi nhanh gọn</p>
-        <input type="text" id="searchInput" class="search-box" placeholder="Tìm kiếm trò chơi..." onkeyup="searchGames()">
+    <!-- Hero Banner Section -->
+    <section class="hero-section">
+        <div>
+            <span class="badge">• GIẢI TRÍ MIỄN PHÍ - CHƠI TRÊN TRÌNH DUYỆT</span>
+            <h1 class="hero-title">Một chút vui vẻ,<br>mỗi ngày.</h1>
+            <p class="hero-desc">Khám phá những trò chơi nhỏ gọn, dễ chơi và thú vị. Không cần cài đặt — chọn game yêu thích và bắt đầu ngay.</p>
+            <div class="hero-btns">
+                <a href="#games" class="btn-primary">Khám phá trò chơi 🚀</a>
+                <a href="about.html" class="btn-secondary">Tìm hiểu thêm</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-visual-badge">✨ Chơi tức thì</div>
+            <div class="hero-visual-center">
+                <div class="arcade-icon">🕹️</div>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-sub);">🌐 Việt Nam • Toàn cầu</div>
+        </div>
+    </section>
+
+    <!-- Feature Row -->
+    <section class="features-row">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <div>
+                <div class="feature-title">Nhanh</div>
+                <div class="feature-desc">Thiết kế nhẹ, ưu tiên tốc độ</div>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <div>
+                <div class="feature-title">Responsive</div>
+                <div class="feature-desc">Máy tính và điện thoại</div>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <div>
+                <div class="feature-title">VI + EN</div>
+                <div class="feature-desc">Sẵn sàng cho người chơi quốc tế</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Grid Section -->
+    <section class="games-section" id="games">
+        <div class="games-grid">
+            
+            <!-- Game 1: Hành Trình Phiêu Lưu -->
+            <div class="game-card-large">
+                <div class="game-thumb thumb-1">
+                    <span class="game-tag">NỔI BẬT</span>
+                    🌴
+                </div>
+                <div class="game-info">
+                    <div>
+                        <div class="game-title">Hành Trình Phiêu Lưu <span style="color:#eab308">★</span></div>
+                        <div class="game-desc">Chạy, nhảy qua chướng ngại vật và thu thập xu trên hành trình.</div>
+                    </div>
+                    <div class="game-footer">
+                        <span>⚡ Phiêu lưu</span>
+                        <a href="games/hanh-trinh/index.html" class="play-link">Chơi ngay ↗</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 2: Thử Thách Trí Nhớ -->
+            <div class="game-card-large">
+                <div class="game-thumb thumb-2">
+                    <span class="game-tag">LUYỆN NÃO</span>
+                    🧠
+                </div>
+                <div class="game-info">
+                    <div>
+                        <div class="game-title">Thử Thách Trí Nhớ <span style="color:#eab308">★</span></div>
+                        <div class="game-desc">Lật thẻ, tìm các cặp hình giống nhau với ít lượt đi nhất.</div>
+                    </div>
+                    <div class="game-footer">
+                        <span>🧩 Trí tuệ</span>
+                        <a href="games/tri-nho/index.html" class="play-link">Chơi ngay ↗</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 3: Toán Nhanh -->
+            <div class="game-card-large">
+                <div class="game-thumb thumb-3">
+                    <span class="game-tag">THỬ THÁCH 60 GIÂY</span>
+                    ➗
+                </div>
+                <div class="game-info">
+                    <div>
+                        <div class="game-title">Toán Nhanh ⚡</div>
+                        <div class="game-desc">Giải càng nhiều phép tính đúng càng tốt trong 60 giây.</div>
+                    </div>
+                    <div class="game-footer">
+                        <span>⚡ Giải trí</span>
+                        <a href="games/toan-nhanh/index.html" class="play-link">Chơi ngay ↗</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 4: Đoán Số May Mắn -->
+            <div class="game-card-large">
+                <div class="game-thumb thumb-4">
+                    <span class="game-tag">MỚI</span>
+                    🎯
+                </div>
+                <div class="game-info">
+                    <div>
+                        <div class="game-title">Đoán Số May Mắn <span style="color:#eab308">★</span></div>
+                        <div class="game-desc">Tìm con số bí mật từ 1 đến 100 trong ít lượt đoán nhất!</div>
+                    </div>
+                    <div class="game-footer">
+                        <span>🧩 Trí tuệ</span>
+                        <a href="games/doan-so/index.html" class="play-link">Chơi ngay ↗</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Info Banner Bottom -->
+    <div style="padding: 0 20px;">
+        <div class="info-banner">
+            <div>
+                <h3>🌟 Một sân chơi đang lớn dần</h3>
+                <p>FunPlay World bắt đầu với những trò chơi nhỏ, tải nhanh và dễ tiếp cận. Chúng tôi sẽ bổ sung thêm game mới theo từng giai đoạn.</p>
+            </div>
+            <div style="font-size: 2rem;">🚀</div>
+        </div>
     </div>
 
-    <div class="categories">
-        <button class="category-btn active" onclick="filterCategory('all')" id="catAll">Tất cả</button>
-        <button class="category-btn" onclick="filterCategory('adventure')" id="catAdv">Phiêu lưu</button>
-        <button class="category-btn" onclick="filterCategory('brain')" id="catBrain">Trí tuệ</button>
-        <button class="category-btn" onclick="filterCategory('puzzle')" id="catPuzzle">Giải đố</button>
-    </div>
-
-    <div class="section-title" id="featuredTitle">Trò chơi nổi bật</div>
-    
-    <div class="games-grid" id="gamesGrid">
-        <!-- Game 1 -->
-        <div class="game-card" data-category="adventure" data-name-vi="Hành Trình Phiêu Lưu" data-name-en="Adventure Journey">
-            <div class="game-icon">🚀</div>
-            <div class="game-name">Hành Trình Phiêu Lưu</div>
-            <a href="games/hanh-trinh/index.html" class="play-btn" data-play="Chơi ngay">Chơi ngay</a>
-        </div>
-        <!-- Game 2 -->
-        <div class="game-card" data-category="brain" data-name-vi="Trí Nhớ" data-name-en="Memory Match">
-            <div class="game-icon">🧠</div>
-            <div class="game-name">Trí Nhớ</div>
-            <a href="games/tri-nho/index.html" class="play-btn" data-play="Chơi ngay">Chơi ngay</a>
-        </div>
-        <!-- Game 3 -->
-        <div class="game-card" data-category="brain" data-name-vi="Toán Nhanh" data-name-en="Quick Math">
-            <div class="game-icon">🔢</div>
-            <div class="game-name">Toán Nhanh</div>
-            <a href="games/toan-nhanh/index.html" class="play-btn" data-play="Chơi ngay">Chơi ngay</a>
-        </div>
-    </div>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 FunPlay World. All rights reserved.</p>
-        <div style="margin-top: 8px;">
-            <a href="about.html" id="linkAbout">Giới thiệu</a> | 
-            <a href="contact.html" id="linkContact">Liên hệ</a> | 
-            <a href="privacy.html" id="linkPrivacy">Quyền riêng tư</a>
+        <p>© 2026 FunPlay World - Chơi vui, chơi có trách nhiệm.</p>
+        <div style="margin-top: 10px;">
+            <a href="about.html">Giới thiệu</a> | 
+            <a href="contact.html">Liên hệ</a> | 
+            <a href="privacy.html">Quyền riêng tư</a>
         </div>
     </footer>
 
-    <script>
-        let currentLang = 'vi';
-
-        const translations = {
-            vi: {
-                heroTitle: "Trò Chơi Trực Tuyến Miễn Phí",
-                heroDesc: "Thư giãn mọi lúc, mọi nơi với các trò chơi nhanh gọn",
-                searchPlaceholder: "Tìm kiếm trò chơi...",
-                catAll: "Tất cả",
-                catAdv: "Phiêu lưu",
-                catBrain: "Trí tuệ",
-                catPuzzle: "Giải đố",
-                featuredTitle: "Trò chơi nổi bật",
-                playBtn: "Chơi ngay",
-                linkAbout: "Giới thiệu",
-                linkContact: "Liên hệ",
-                linkPrivacy: "Quyền riêng tư"
-            },
-            en: {
-                heroTitle: "Free Online Games",
-                heroDesc: "Play fun and casual games anytime, anywhere",
-                searchPlaceholder: "Search games...",
-                catAll: "All",
-                catAdv: "Adventure",
-                catBrain: "Brain",
-                catPuzzle: "Puzzle",
-                featuredTitle: "Featured Games",
-                playBtn: "Play Now",
-                linkAbout: "About",
-                linkContact: "Contact",
-                linkPrivacy: "Privacy Policy"
-            }
-        };
-
-        function toggleLang() {
-            currentLang = currentLang === 'vi' ? 'en' : 'vi';
-            const t = translations[currentLang];
-            
-            document.getElementById('heroTitle').innerText = t.heroTitle;
-            document.getElementById('heroDesc').innerText = t.heroDesc;
-            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
-            document.getElementById('catAll').innerText = t.catAll;
-            document.getElementById('catAdv').innerText = t.catAdv;
-            document.getElementById('catBrain').innerText = t.catBrain;
-            document.getElementById('catPuzzle').innerText = t.catPuzzle;
-            document.getElementById('featuredTitle').innerText = t.featuredTitle;
-            document.getElementById('linkAbout').innerText = t.linkAbout;
-            document.getElementById('linkContact').innerText = t.linkContact;
-            document.getElementById('linkPrivacy').innerText = t.linkPrivacy;
-
-            // Cập nhật tên game và nút chơi theo ngôn ngữ
-            document.querySelectorAll('.game-card').forEach(card => {
-                const nameDiv = card.querySelector('.game-name');
-                const playBtn = card.querySelector('.play-btn');
-                if (currentLang === 'en') {
-                    nameDiv.innerText = card.getAttribute('data-name-en');
-                } else {
-                    nameDiv.innerText = card.getAttribute('data-name-vi');
-                }
-                playBtn.innerText = t.playBtn;
-            });
-        }
-
-        function searchGames() {
-            let query = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.querySelectorAll('.game-card');
-            cards.forEach(card => {
-                let nameVi = card.getAttribute('data-name-vi').toLowerCase();
-                let nameEn = card.getAttribute('data-name-en').toLowerCase();
-                if (nameVi.includes(query) || nameEn.includes(query)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        function filterCategory(category) {
-            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            let cards = document.querySelectorAll('.game-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    </script>
 </body>
 </html>
